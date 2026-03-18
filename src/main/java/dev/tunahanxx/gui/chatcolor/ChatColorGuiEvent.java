@@ -159,7 +159,6 @@ public class ChatColorGuiEvent implements Listener {
         }
     }
 
-    // TunahanXX
     private void colorSelect(Player player, String colorName) {
         if (colorName == null || colorName.isEmpty()) {
             player.sendMessage(stringWrap.chatColorSelectedSuccessfully());

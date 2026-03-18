@@ -22,35 +22,6 @@ public final class PrismFileManager {
         return prismFile;
     }
 
-    public PrismFile getOrCreate(String path) {
-        String normalized = normalize(path);
-        PrismFile prismFile = files.get(normalized);
-        if (prismFile != null) {
-            return prismFile;
-        }
-        return create(normalized);
-    }
-
-    public void reload(String path) {
-        get(path).reload();
-    }
-
-    public void save(String path) {
-        get(path).save();
-    }
-
-    public void reloadAll() {
-        for (PrismFile prismFile : files.values()) {
-            prismFile.reload();
-        }
-    }
-
-    public void saveAll() {
-        for (PrismFile prismFile : files.values()) {
-            prismFile.save();
-        }
-    }
-
     private String normalize(String path) {
         String normalized = path.replace("\\", "/").trim();
         while (normalized.startsWith("/")) {
