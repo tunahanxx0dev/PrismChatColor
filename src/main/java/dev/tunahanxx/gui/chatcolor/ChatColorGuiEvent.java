@@ -160,7 +160,7 @@ public class ChatColorGuiEvent implements Listener {
         }
     }
 
-    // Oyuncu Renk Seçimi Kaybolmamasını Yapmak Gerekirse Dosyaya Veri Kaydetme Sistemi Yaz.
+    // TunahanXX
     private void colorSelect(Player player, String colorName) {
         if (colorName == null || colorName.isEmpty()) {
             player.sendMessage(stringWrap.chatColorSelectedSuccessfully());
