@@ -22,6 +22,12 @@ public final class PrismFileManager {
         return prismFile;
     }
 
+    public void reloadAll() {
+        for (PrismFile prismFile : files.values()) {
+            prismFile.reload();
+        }
+    }
+
     private String normalize(String path) {
         String normalized = path.replace("\\", "/").trim();
         while (normalized.startsWith("/")) {
