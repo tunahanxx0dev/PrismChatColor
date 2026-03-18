@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="PrismChatColor:jar">
+    <output-path>$USER_HOME$/AppData/Local/JetBrains/IntelliJIdea2025.3/com.nickawrist.MinecraftDevServer/1.21.11/plugins</output-path>
+    <root id="archive" name="PrismChatColor.jar">
+      <element id="module-output" name="PrismChatColor" />
+    </root>
+  </artifact>
+</component>
