@@ -1,7 +1,6 @@
 package dev.tunahanxx.gui.chatcolor;
 
 import dev.tunahanxx.PrismChatColor;
-import dev.tunahanxx.api.ChatColorAPI;
 import dev.tunahanxx.util.StringWrap;
 import org.bukkit.Sound;
 import org.bukkit.configuration.file.FileConfiguration;
