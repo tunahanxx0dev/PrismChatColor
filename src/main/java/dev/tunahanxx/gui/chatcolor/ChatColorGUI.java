@@ -13,7 +13,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,8 +21,11 @@ public class ChatColorGUI {
 
     private static final int CHAT_COLOR_SIZE = 27;
 
-    private static final Map<String, Color> NAMED_COLORS = new HashMap<>();
-    private static final Map<Character, Color> LEGACY_COLORS = new HashMap<>();
+    private static final Map<String, Color> NAMED_COLORS = new LinkedHashMap<>();
+    private static final Map<Character, Color> LEGACY_COLORS = new LinkedHashMap<>();
+    private static final int FIRST_COLOR_SLOT = 9;
+    private static final int COLOR_COUNT = 9;
+    private static final int CLEAR_COLOR_SLOT = 22;
 
     static {
         NAMED_COLORS.put("BLACK", Color.fromRGB(0, 0, 0));
@@ -74,119 +77,19 @@ public class ChatColorGUI {
     }
 
     public void fillInventory(Inventory gui) {
-
         gui.clear();
 
         FileConfiguration config = getConfig();
-
-        String oneColorString = config.getString("chatcolor.guis.color.1_color");
-        Color oneColor = parseColor(oneColorString);
-        ItemStack oneColorChest = new ItemStack(Material.LEATHER_CHESTPLATE, 1);
-        LeatherArmorMeta oneMeta = (LeatherArmorMeta) oneColorChest.getItemMeta();
-        oneMeta.addItemFlags(ItemFlag.HIDE_DYE);
-        oneMeta.setDisplayName(ColorTranslate.colorize(config.getString("chatcolor.guis.name.1_name")));
-        oneMeta.setColor(oneColor);
-        oneColorChest.setItemMeta(oneMeta);
-
-        String secondColorString = config.getString("chatcolor.guis.color.2_color");
-        Color secondColor = parseColor(secondColorString);
-        ItemStack secondColorChest = new ItemStack(Material.LEATHER_CHESTPLATE, 1);
-        LeatherArmorMeta secondMeta = (LeatherArmorMeta) secondColorChest.getItemMeta();
-        secondMeta.addItemFlags(ItemFlag.HIDE_DYE);
-        secondMeta.setDisplayName(ColorTranslate.colorize(config.getString("chatcolor.guis.name.2_name")));
-        secondMeta.setColor(secondColor);
-        secondColorChest.setItemMeta(secondMeta);
-
-        String threeColorString = config.getString("chatcolor.guis.color.3_color");
-        Color threeColor = parseColor(threeColorString);
-        ItemStack threeColorChest = new ItemStack(Material.LEATHER_CHESTPLATE, 1);
-        LeatherArmorMeta threeMeta = (LeatherArmorMeta) secondColorChest.getItemMeta();
-        threeMeta.addItemFlags(ItemFlag.HIDE_DYE);
-        threeMeta.setDisplayName(ColorTranslate.colorize(config.getString("chatcolor.guis.name.3_name")));
-        threeMeta.setColor(threeColor);
-        threeColorChest.setItemMeta(threeMeta);
-
-        String fourColorString = config.getString("chatcolor.guis.color.4_color");
-        Color fourColor = parseColor(fourColorString);
-        ItemStack fourColorChest = new ItemStack(Material.LEATHER_CHESTPLATE, 1);
-        LeatherArmorMeta fourMeta = (LeatherArmorMeta) fourColorChest.getItemMeta();
-        fourMeta.addItemFlags(ItemFlag.HIDE_DYE);
-        fourMeta.setDisplayName(ColorTranslate.colorize(config.getString("chatcolor.guis.name.4_name")));
-        fourMeta.setColor(fourColor);
-        fourColorChest.setItemMeta(fourMeta);
-
-        String fiveColorString = config.getString("chatcolor.guis.color.5_color");
-        Color fiveColor = parseColor(fiveColorString);
-        ItemStack fiveColorChest = new ItemStack(Material.LEATHER_CHESTPLATE, 1);
-        LeatherArmorMeta fiveMeta = (LeatherArmorMeta) fiveColorChest.getItemMeta();
-        fiveMeta.addItemFlags(ItemFlag.HIDE_DYE);
-        fiveMeta.setDisplayName(ColorTranslate.colorize(config.getString("chatcolor.guis.name.5_name")));
-        fiveMeta.setColor(fiveColor);
-        fiveColorChest.setItemMeta(fiveMeta);
-
-        String sixColorString = config.getString("chatcolor.guis.color.6_color");
-        Color sixColor = parseColor(sixColorString);
-        ItemStack sixColorChest = new ItemStack(Material.LEATHER_CHESTPLATE, 1);
-        LeatherArmorMeta sixMeta = (LeatherArmorMeta) sixColorChest.getItemMeta();
-        sixMeta.addItemFlags(ItemFlag.HIDE_DYE);
-        sixMeta.setDisplayName(ColorTranslate.colorize(config.getString("chatcolor.guis.name.6_name")));
-        sixMeta.setColor(sixColor);
-        sixColorChest.setItemMeta(sixMeta);
-
-        String sevenColorString = config.getString("chatcolor.guis.color.7_color");
-        Color sevenColor = parseColor(sevenColorString);
-        ItemStack sevenColorChest = new ItemStack(Material.LEATHER_CHESTPLATE, 1);
-        LeatherArmorMeta sevenMeta = (LeatherArmorMeta) sevenColorChest.getItemMeta();
-        sevenMeta.addItemFlags(ItemFlag.HIDE_DYE);
-        sevenMeta.setDisplayName(ColorTranslate.colorize(config.getString("chatcolor.guis.name.7_name")));
-        sevenMeta.setColor(sevenColor);
-        sevenColorChest.setItemMeta(sevenMeta);
-
-        String eightColorString = config.getString("chatcolor.guis.color.8_color");
-        Color eightColor = parseColor(eightColorString);
-        ItemStack eightColorChest = new ItemStack(Material.LEATHER_CHESTPLATE, 1);
-        LeatherArmorMeta eightMeta = (LeatherArmorMeta) eightColorChest.getItemMeta();
-        eightMeta.addItemFlags(ItemFlag.HIDE_DYE);
-        eightMeta.setDisplayName(ColorTranslate.colorize(config.getString("chatcolor.guis.name.8_name")));
-        eightMeta.setColor(eightColor);
-        eightColorChest.setItemMeta(eightMeta);
-
-        String nineColorString = config.getString("chatcolor.guis.color.9_color");
-        Color nineColor = parseColor(nineColorString);
-        ItemStack nineColorChest = new ItemStack(Material.LEATHER_CHESTPLATE, 1);
-        LeatherArmorMeta nineMeta = (LeatherArmorMeta) nineColorChest.getItemMeta();
-        nineMeta.addItemFlags(ItemFlag.HIDE_DYE);
-        nineMeta.setDisplayName(ColorTranslate.colorize(config.getString("chatcolor.guis.name.9_name")));
-        nineMeta.setColor(nineColor);
-        nineColorChest.setItemMeta(nineMeta);
-
-        ItemStack clearColorItem = new ItemStack(Material.valueOf(config.getString("chatcolor.guis.clear_color_item.material")));
-        ItemMeta clearColorItemMeta = clearColorItem.getItemMeta();
-        clearColorItemMeta.setDisplayName(ColorTranslate.colorize(config.getString("chatcolor.guis.clear_color_item.name")));
-        List<String> lore = config.getStringList("chatcolor.guis.clear_color_item.lore")
-                .stream()
-                .map(ColorTranslate::colorize)
-                .toList();
-        clearColorItemMeta.setLore(lore);
-        clearColorItem.setItemMeta(clearColorItemMeta);
-
-        gui.setItem(9, oneColorChest);
-        gui.setItem(10, secondColorChest);
-        gui.setItem(11, threeColorChest);
-        gui.setItem(12, fourColorChest);
-        gui.setItem(13, fiveColorChest);
-        gui.setItem(14, sixColorChest);
-        gui.setItem(15, sevenColorChest);
-        gui.setItem(16, eightColorChest);
-        gui.setItem(17, nineColorChest);
-        gui.setItem(22, clearColorItem);
+        for (int index = 1; index <= COLOR_COUNT; index++) {
+            gui.setItem(FIRST_COLOR_SLOT + index - 1, createColorItem(config, index));
+        }
+        gui.setItem(CLEAR_COLOR_SLOT, createClearColorItem(config));
 
         String materialType = config.getString("chatcolor.guis.fill_item.material");
         assert materialType != null;
         Material material = Material.valueOf(materialType.toUpperCase());
         ItemStack filler = createFillerItem(material, ColorTranslate.colorize(config.getString("chatcolor.guis.fill_item.name")));
         fillEmptySlots(gui, filler);
-
     }
 
     public void updateOpenInventories() {
@@ -227,6 +130,40 @@ public class ChatColorGUI {
             item.setItemMeta(meta);
         }
         return item;
+    }
+
+    private ItemStack createColorItem(FileConfiguration config, int index) {
+        ItemStack colorItem = new ItemStack(Material.LEATHER_CHESTPLATE);
+        LeatherArmorMeta meta = (LeatherArmorMeta) colorItem.getItemMeta();
+        if (meta == null) {
+            return colorItem;
+        }
+
+        meta.addItemFlags(ItemFlag.HIDE_DYE);
+        meta.setDisplayName(ColorTranslate.colorize(config.getString("chatcolor.guis.name." + index + "_name")));
+        meta.setColor(parseColor(config.getString("chatcolor.guis.color." + index + "_color")));
+        colorItem.setItemMeta(meta);
+        return colorItem;
+    }
+
+    private ItemStack createClearColorItem(FileConfiguration config) {
+        String materialName = config.getString("chatcolor.guis.clear_color_item.material");
+        assert materialName != null;
+
+        ItemStack clearColorItem = new ItemStack(Material.valueOf(materialName.toUpperCase()));
+        ItemMeta meta = clearColorItem.getItemMeta();
+        if (meta == null) {
+            return clearColorItem;
+        }
+
+        meta.setDisplayName(ColorTranslate.colorize(config.getString("chatcolor.guis.clear_color_item.name")));
+        List<String> lore = config.getStringList("chatcolor.guis.clear_color_item.lore")
+                .stream()
+                .map(ColorTranslate::colorize)
+                .toList();
+        meta.setLore(lore);
+        clearColorItem.setItemMeta(meta);
+        return clearColorItem;
     }
 
     private Color parseColor(String input) {
